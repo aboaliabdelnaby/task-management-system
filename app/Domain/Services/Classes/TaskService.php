@@ -63,4 +63,8 @@ class TaskService implements ITaskService
 
         return 'The record was successfully deleted!';
     }
+    public function dashboard(): array
+    {
+        return $this->taskRepository->getStats();
+    }
 }
