@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Filters\Projects;
+namespace App\Domain\Filters\Project;
 
 use App\Domain\Filters\IFilter;
 use Closure;
 
-class AuthFilter implements IFilter
+class UserProjectsFilter implements IFilter
 {
     /**
      * @throws \Throwable

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Enums;
+namespace App\Domain\Enums\Project;
 
 enum ProjectStatus :string
 {

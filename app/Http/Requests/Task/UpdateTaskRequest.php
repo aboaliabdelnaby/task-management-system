@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Project;
+namespace App\Http\Requests\Task;
 
-use App\Domain\Enums\Project\ProjectStatus;
+use App\Domain\Enums\Task\TaskPriority;
+use App\Domain\Enums\Task\TaskStatus;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreProjectRequest extends FormRequest
+class UpdateTaskRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,11 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|string|max:255',
-            'description'=>'required|string',
-            'status'=>['required', Rule::enum(ProjectStatus::class)]
+            'project_id'=>'required|exists:projects,id',
+            'title'=>'required|string|max:255',
+            'priority'=>['required', Rule::enum(TaskPriority::class)],
+            'status'=>['required', Rule::enum(TaskStatus::class)],
+            'due_date'=>'required|date'
         ];
     }
 }

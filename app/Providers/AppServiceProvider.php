@@ -3,16 +3,21 @@
 namespace App\Providers;
 
 use App\Domain\Repostories\Classes\ProjectRepository;
+use App\Domain\Repostories\Classes\TaskRepository;
 use App\Domain\Repostories\Classes\UserRepository;
 use App\Domain\Repostories\Interfaces\IProjectRepository;
+use App\Domain\Repostories\Interfaces\ITaskRepository;
 use App\Domain\Repostories\Interfaces\IUserRepository;
 use App\Domain\Responder\Classes\ApiHttpResponder;
 use App\Domain\Responder\Interfaces\IApiHttpResponder;
 use App\Domain\Services\Classes\AuthService;
 use App\Domain\Services\Classes\ProjectService;
+use App\Domain\Services\Classes\TaskService;
 use App\Domain\Services\Interfaces\IAuthService;
 use App\Domain\Services\Interfaces\IProjectService;
+use App\Domain\Services\Interfaces\ITaskService;
 use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
@@ -39,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->scoped(IProjectService::class, ProjectService::class);
         $this->app->scoped(IProjectRepository::class, function () {
             return new ProjectRepository(new Project);
+        });
+        $this->app->scoped(ITaskService::class, TaskService::class);
+        $this->app->scoped(ITaskRepository::class, function () {
+            return new TaskRepository(new Task);
         });
 
     }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Domain\Enums\ProjectStatus;
+use App\Domain\Enums\Project\ProjectStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
